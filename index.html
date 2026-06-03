@@ -5,10 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>現幻対称記</title>
     <link rel="icon" type="image/png" href="/ffsymmetry/favicon.png" />
-    <script type="module" crossorigin src="/ffsymmetry/assets/index-BiyOeJGB.js"></script>
+    <script type="module" crossorigin src="/ffsymmetry/assets/index-CDcogY4z.js"></script>
     <link rel="stylesheet" crossorigin href="/ffsymmetry/assets/index-BcaJXXyz.css">
   </head>
   <body>
+    <div id="error-overlay" style="color:red; background:black; font-family:monospace; white-space:pre-wrap; z-index:9999; position:absolute; top:0; left:0; width:100%;"></div>
+    <script>
+      window.onerror = function(msg, url, lineNo, columnNo, error) {
+        document.getElementById('error-overlay').innerText += '\n' + msg + ' ' + url + ':' + lineNo + ':' + columnNo;
+        if (error && error.stack) document.getElementById('error-overlay').innerText += '\n' + error.stack;
+      };
+      window.addEventListener('unhandledrejection', function(event) {
+        document.getElementById('error-overlay').innerText += '\nUnhandled Promise: ' + event.reason;
+      });
+    </script>
     <div id="app"></div>
   </body>
 </html>
